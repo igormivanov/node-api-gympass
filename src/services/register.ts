@@ -1,5 +1,4 @@
 import { prisma } from '@/lib/prisma'
-import { PrismaUsersRepository } from '@/repositories/prisma-users-repository'
 import { hash } from 'bcryptjs'
 
 interface RegisterServiceProps {
@@ -24,9 +23,7 @@ export class RegisterService {
       throw new Error('E-mail already exists.')
     }
 
-    const prismaUsersRepository = new PrismaUsersRepository()
-
-    prismaUsersRepository.create({
+    await this.usersRepository.create({
       name,
       email,
       password_hash,
