@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-user-repository'
+import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { AuthenticateService } from './authenticate'
 import { hash } from 'bcryptjs'
 import { InvalidCredentialsError } from './errors/invalid-credentials-error'
@@ -29,7 +29,7 @@ describe('Authenticate Use Case', () => {
   })
 
   it('should not be able to authenticate with wrong email', async () => {
-    expect(() =>
+    await expect(() =>
       sut.execute({
         email: 'igorauthenticate2@gmail.com',
         password: '123456',
@@ -44,7 +44,7 @@ describe('Authenticate Use Case', () => {
       password_hash: await hash('123456', 6),
     })
 
-    expect(() =>
+    await expect(() =>
       sut.execute({
         email: 'igorauthenticate@gmail.com',
         password: '321321',

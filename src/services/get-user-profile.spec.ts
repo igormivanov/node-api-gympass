@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-user-repository'
+import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { hash } from 'bcryptjs'
 import { GetUserProfileService } from './get-user-profile'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
@@ -13,7 +13,7 @@ describe('Get User Profile Use Case', () => {
     sut = new GetUserProfileService(userRepository)
   })
 
-  it.only('should be able to get user profile', async () => {
+  it('should be able to get user profile', async () => {
     const createdUser = await userRepository.create({
       name: 'igor id',
       email: 'igorauthenticate@gmail.com',
