@@ -9,9 +9,7 @@ export class PrismaUsersRepository implements UsersRepository {
         id: userId,
       },
     })
-    if (!user) {
-      return null
-    }
+
     return user
   }
 
