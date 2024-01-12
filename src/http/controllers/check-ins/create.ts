@@ -20,7 +20,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     request.body,
   )
 
-  const { gymId } = createCheckInParamsSchema.parse(request.query)
+  const { gymId } = createCheckInParamsSchema.parse(request.params)
 
   const checkInService = makeCheckInService()
 
