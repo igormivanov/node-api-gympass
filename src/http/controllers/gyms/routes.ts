@@ -7,8 +7,8 @@ import { verifyJWT } from '@/http/middlewares/verify-jwt'
 export async function gymsRoutes(app: FastifyInstance) {
   app.addHook('onRequest', verifyJWT)
 
-  app.get('/gym/nearby', nearby)
-  app.get('/gym/search', search)
+  app.get('/gyms/nearby', nearby)
+  app.get('/gyms/search', search)
 
-  app.post('/gym', create)
+  app.post('/gyms', create)
 }
